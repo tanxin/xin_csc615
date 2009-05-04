@@ -20,58 +20,39 @@
  */
 package edu.nu.csc615.assignment1;
 
-import java.util.HashMap;
-
-import edu.nu.csc615.assignment1.exception.InvalidInputException;
-
 public class Grade {
-	public final static double NUM_A = 4.0;
-	public final static double NUM_AM = 3.7;
-	public final static double NUM_BP = 3.3;
-	public final static double NUM_B = 3.0;
-	public final static double NUM_BM = 2.7;
-	public final static double NUM_CP = 2.3;
-	public final static double NUM_C = 2.0;
-	public final static double NUM_CM = 1.7;
-	public final static double NUM_DP = 1.3;
-	public final static double NUM_D = 1.0;
-	public final static double NUM_DM = 0.7;
-	public final static double NUM_F = 0.0;
+
+	public static final double NUM_A = 4.0;
+	public static final double NUM_AM = 3.7;
+	public static final double NUM_BP = 3.3;
+	public static final double NUM_B = 3.0;
+	public static final double NUM_BM = 2.7;
+	public static final double NUM_CP = 2.3;
+	public static final double NUM_C = 2.0;
+	public static final double NUM_CM = 1.7;
+	public static final double NUM_DP = 1.3;
+	public static final double NUM_D = 1.0;
+	public static final double NUM_DM = 0.7;
+	public static final double NUM_F = 0.0;
 	
-	HashMap<String, Double> gradeList;
+	protected String gradeString;
 	
-	private String gradeString;
-	
-	public Grade(){
-		gradeList = new HashMap<String, Double>();
-		gradeList.put("A", NUM_A);
-		gradeList.put("A-", NUM_AM);
-		gradeList.put("B+", NUM_BP);
-		gradeList.put("B", NUM_B);
-		gradeList.put("B-", NUM_BM);
-		gradeList.put("C+", NUM_CP);
-		gradeList.put("C", NUM_C);
-		gradeList.put("C-", NUM_CM);
-		gradeList.put("D+", NUM_DP);
-		gradeList.put("D", NUM_D);
-		gradeList.put("D-", NUM_DM);
-		gradeList.put("F", NUM_F);
-	}
-	
-	public void setGradeString(String gradeString) {
-		this.gradeString = gradeString;
-	}
+	protected double gradeDouble;
 	
 	public String getGradeString() {
 		return gradeString;
 	}
 
-	public double getGrade() throws InvalidInputException{
-		try{
-			return gradeList.get(gradeString);
-		}catch(NullPointerException e){
-			/* impossible */
-			throw new InvalidInputException();
-		}
+	public void setGradeString(String gradeString) {
+		this.gradeString = gradeString;
 	}
+
+	public double getGradeDouble() {
+		return gradeDouble;
+	}
+
+	public void setGradeDouble(double gradeDouble) {
+		this.gradeDouble = gradeDouble;
+	}
+
 }

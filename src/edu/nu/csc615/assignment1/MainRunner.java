@@ -24,29 +24,32 @@ import edu.nu.csc615.assignment1.exception.ExitException;
 import edu.nu.csc615.assignment1.exception.InvalidInputException;
 
 public class MainRunner {
+	
+	/* exit code to the shell */
+	public final static int EXIT_NORMAL = 0;
+	public final static int EXIT_FATAL = 9;
 
 	/**
-	 * entrance point
-	 * @param args
+	 * Entrance point
+	 * @param args	unless so far
 	 */
 	public static void main(String[] args) {
-		GradeReader gradeReader = new GradeReader();
+		
+		GradeAccessor gradeAccessor = new GradeAccessor();
+		
 		while(true){
 			try{
-				gradeReader.readFromDialog();
-				gradeReader.writeToTerminal();
-			}catch(InvalidInputException e){
-				/* invalid grade */
+				gradeAccessor.readFromDialog();
+				gradeAccessor.writeToTerminal();
+			}catch(InvalidInputException e /* invalid grade */){ 
 				System.err.println("Please enter A-F");
-			}catch(ExitException e){
-				/* exit exception */
+			}catch(ExitException e /* exit exception */){
 				System.out.println("Thank you for your using.");
-				System.exit(0);
-			}catch(Exception e){
-				/* impossible exception catch */
-				System.err.println("impossible exception");
+				System.exit(EXIT_NORMAL);
+			}catch(Exception e /* impossible exception catch */){
+				System.err.println("impossible exception occured, debug information:");
 				e.printStackTrace();
-				System.exit(9);
+				System.exit(EXIT_FATAL);
 			}
 		}
 	}

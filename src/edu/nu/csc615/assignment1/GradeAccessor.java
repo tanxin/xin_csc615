@@ -25,25 +25,29 @@ import javax.swing.JOptionPane;
 import edu.nu.csc615.assignment1.exception.ExitException;
 import edu.nu.csc615.assignment1.exception.InvalidInputException;
 
-public class GradeReader {
-	private Grade grade;
+public class GradeAccessor {
+	private GradeAgent grade;
 	
-	public GradeReader(){
-		grade = new Grade();
+	public GradeAccessor(){
+		grade = new GradeAgent();
 	}
 	
-	public Grade getGrade() {
-		return grade;
-	}
-
-	public void readFromDialog() throws ExitException {
+	/**
+	 * Read grade from Dialog, JOptionPane is required to be used in assignment requirement
+	 * @throws ExitException			ask for exit if press cancel button
+	 * @throws InvalidInputException	invalid grade string from A to F
+	 */
+	public void readFromDialog() throws ExitException, InvalidInputException {
 		String input = JOptionPane.showInputDialog("Please enter a grade number, press cancel to stop");
 		if(input == null)
 			throw new ExitException();
-		grade.setGradeString(input);
+		grade.setGrade(input);
 	}
 	
-	public void writeToTerminal() throws InvalidInputException{
-		System.out.println(grade.getGradeString() + ":" + grade.getGrade());
+	/**
+	 * Write result to stdout followed by assignment requirement
+	 */
+	public void writeToTerminal() {
+		System.out.println(grade.getGradeString() + ":" + grade.getGradeDouble());
 	}
 }
