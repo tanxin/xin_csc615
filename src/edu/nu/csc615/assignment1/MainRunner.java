@@ -55,6 +55,7 @@ public class MainRunner {
 			}catch(InvalidInputException e /* invalid grade, print error message and keep going*/){ 
 				System.err.println("Please enter A-F");
 			}catch(ExitException e /* exit exception by clicking cancel button and exit with normal signal*/){
+				gradeAccessor.writeGPAToTerminal();
 				System.out.println("Thank you for your using.");
 				System.exit(EXIT_NORMAL);
 			}catch(Exception e /* impossible exception catch, could not happen generally. if that happen, need debug stack */){

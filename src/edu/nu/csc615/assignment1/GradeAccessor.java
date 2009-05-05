@@ -30,10 +30,12 @@ import edu.nu.csc615.assignment1.exception.InvalidInputException;
  *
  */
 public class GradeAccessor {
-	private GradeAgent grade;
+	private GradeAgent grade, totalGrade;
+	private int count=0;
 	
 	public GradeAccessor(){
 		grade = new GradeAgent();
+		totalGrade = new GradeAgent();
 	}
 	
 	/**
@@ -46,6 +48,9 @@ public class GradeAccessor {
 		if(input == null)
 			throw new ExitException();
 		grade.setGrade(input);
+		
+		totalGrade.addGrade(grade);
+		count++;
 	}
 	
 	/**
@@ -53,5 +58,11 @@ public class GradeAccessor {
 	 */
 	public void writeToTerminal() {
 		System.out.println(grade.getGradeString() + ":" + grade.getGradeDouble());
+	}
+	
+	public void writeGPAToTerminal(){
+		GradeAgent result = new GradeAgent();
+		result.setGrade(totalGrade.getGradeDouble() / Double.valueOf(count));
+		System.out.println("GPA:" + result.getGradeString() + "(" + result.getGradeDouble() + ")");
 	}
 }

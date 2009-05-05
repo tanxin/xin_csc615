@@ -65,14 +65,37 @@ public class GradeAgent extends Grade {
 	}
 	
 	/**
-	 * TODO: unimplemented!!
 	 * Generate grade from input grade point  
 	 * @param gradeDouble	the grade from 0.0-4.0
 	 */
 	public void setGrade(Double gradeDouble){
 		this.gradeDouble = gradeDouble;
-		this.gradeString = null;
-		throw new RuntimeException("This method has not been implemented!!");
+		if(gradeDouble>NUM_BP)
+			this.gradeString = "A";
+		else if(gradeDouble>NUM_B)
+			this.gradeString = "B+";
+		else if(gradeDouble>NUM_BM)
+			this.gradeString = "B";
+		else if(gradeDouble>NUM_CP)
+			this.gradeString = "B-";
+		else if(gradeDouble>NUM_C)
+			this.gradeString = "C+";
+		else if(gradeDouble>NUM_CM)
+			this.gradeString = "C";
+		else if(gradeDouble>NUM_DP)
+			this.gradeString = "C-";
+		else if(gradeDouble>NUM_D)
+			this.gradeString = "D+";
+		else if(gradeDouble>NUM_DM)
+			this.gradeString = "D";
+		else if(gradeDouble>=NUM_F)
+			this.gradeString = "F";
+		else
+			this.gradeString = null;
+	}
+	
+	public void addGrade(Grade grade){
+		this.setGradeDouble(grade.getGradeDouble() + this.getGradeDouble());
 	}
 
 }
