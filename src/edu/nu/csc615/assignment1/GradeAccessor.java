@@ -25,6 +25,10 @@ import javax.swing.JOptionPane;
 import edu.nu.csc615.assignment1.exception.ExitException;
 import edu.nu.csc615.assignment1.exception.InvalidInputException;
 
+/**
+ * Accessor with Input Output
+ *
+ */
 public class GradeAccessor {
 	private GradeAgent grade;
 	

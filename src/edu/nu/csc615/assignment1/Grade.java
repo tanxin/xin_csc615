@@ -20,6 +20,10 @@
  */
 package edu.nu.csc615.assignment1;
 
+/**
+ * Object Grade
+ *
+ */
 public class Grade {
 
 	public static final double NUM_A = 4.0;

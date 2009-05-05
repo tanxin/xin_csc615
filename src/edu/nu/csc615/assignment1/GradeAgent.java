@@ -24,6 +24,9 @@ import java.util.HashMap;
 
 import edu.nu.csc615.assignment1.exception.InvalidInputException;
 
+/**
+ * GradeAgent grade with the logic
+ */
 public class GradeAgent extends Grade {
 	HashMap<String, Double> gradeList;
 	
