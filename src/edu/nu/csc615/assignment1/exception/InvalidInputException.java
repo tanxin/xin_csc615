@@ -21,7 +21,12 @@
 package edu.nu.csc615.assignment1.exception;
 
 public class InvalidInputException extends Exception {
+	
 	public InvalidInputException(){
 		super("Invalid Input Exception");
+	}
+	
+	public InvalidInputException(String string){
+		super(string);
 	}
 }

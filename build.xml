@@ -1,36 +1,40 @@
-<project name="CSC610" default="compile" basedir=".">
+<project name="CSC615" default="compile" basedir=".">
 	<description>
-		simple example build file
+		csc615 build file
 	</description>
-	<!-- set global properties for this build -->
+
 	<property name="src" location="src"/>
 	<property name="build" location="build"/>
 
 	<target name="init">
-		<!-- Create the time stamp -->
 		<tstamp/>
-		<!-- Create the build directory structure used by compile -->
 		<mkdir dir="${build}"/>
 	</target>
 
-	<target name="compile" depends="init"
-		description="compile the source " >
-		<!-- Compile the java code from ${src} into ${build} -->
+	<target name="compile" depends="init" description="compile the source">
 		<javac srcdir="${src}" destdir="${build}"/>
 	</target>
 
 	<target name="clean"
 		description="clean up" >
-		<!-- Delete the ${build} and ${dist} directory trees -->
 		<delete dir="${build}"/>
 		<delete dir="${dist}"/>
 	</target>
 
-	<target name="run" depends="compile"
-		description="run program" >
-		<java classname="edu.nu.csc615.assignment1.MainRunner"
-			classpath="${build}"
-			fork="true"/>
+	<target name="runa1" depends="compile" description="run program">
+		<java classname="edu.nu.csc615.assignment1.MainRunner" classpath="${build}" fork="true"/>
+	</target>
+	
+	<target name="runa2" depends="compile" description="run program">
+		<java classname="edu.nu.csc615.assignment2.Calculator" classpath="${build}" fork="true"/>
+	</target>
+
+	<target name="runl1" depends="compile" description="run program">
+		<java classname="edu.nu.csc615.lab1.SimpleCalc" classpath="${build}" fork="true"/>
+	</target>
+	
+	<target name="runl2" depends="compile" description="run program">
+		<java classname="edu.nu.csc615.lab2.MainRunner" classpath="${build}" fork="true"/>
 	</target>
 
 </project>
