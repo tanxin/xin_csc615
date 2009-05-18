@@ -51,7 +51,7 @@ public class PassCode extends JFrame {
 	
 	public final static int BUTTON_NUM = 12;
 	public final static int STATUS_NORMAL = 0;
-	public final static int STATUS_RESULT = 1;	
+	public final static int STATUS_RESULT = 1;
 
 	private JPanel titlePane;
 	private JPanel passPane;
@@ -74,6 +74,7 @@ public class PassCode extends JFrame {
 		/* initialize object */
 		buttonArray = new JButton[BUTTON_NUM];		
 		titleLabel = new JLabel("Security Access System");
+		titleLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD+Font.ITALIC,22));
 		passField = new JPasswordField();
 		outputField = new JFormattedTextField();
 		
@@ -142,8 +143,9 @@ public class PassCode extends JFrame {
 
 		/* layout definition */
 		Container contentPane = getContentPane();
+		contentPane.setPreferredSize(new Dimension(1000,3000));
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-		buttonPane.setLayout(new GridLayout(5,6,2,2));
+		buttonPane.setLayout(new GridLayout(4,3,2,2));
 
 		contentPane.add(titlePane);
 		contentPane.add(passPane);
@@ -188,6 +190,7 @@ public class PassCode extends JFrame {
 		if( intText < 1000){
 			outputField.setText("Access Denied!!");
 			outputField.setForeground(Color.RED);
+			flashThread.start();
 		}else if(intText >= 1645 && intText <=1689){
 			outputField.setText("Technical Personnel!!");
 			outputField.setForeground(Color.GREEN);
@@ -203,9 +206,8 @@ public class PassCode extends JFrame {
 		}else{
 			outputField.setText("Access Denied!!");
 			outputField.setForeground(Color.RED);
+			flashThread.start();
 		}
-
-		flashThread.start();
 	}
 	
 	private void numButtonActionPerformed(ActionEvent evt) {

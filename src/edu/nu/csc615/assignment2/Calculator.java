@@ -24,8 +24,8 @@
  * Compile:	sun-jdk-1.6.0.13 64bit
  * Date:	May 8th 2009
  * Makefile:build.xml (runa2)
- * Memo:	Prof: it could not be compiled last assignment with 7 separate files, this time I tried to do within 1 file without packages 
  */
+
 package edu.nu.csc615.assignment2;
 
 import java.awt.Container;
@@ -35,6 +35,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -43,7 +44,7 @@ import javax.swing.WindowConstants;
 
 import edu.nu.csc615.assignment1.exception.InvalidInputException;
 
-public class Calculator extends javax.swing.JFrame {
+public class Calculator extends JFrame {
 
 	private JButton addButton;
 	private JButton clearButton;
@@ -242,7 +243,7 @@ public class Calculator extends javax.swing.JFrame {
 		try{
 			return Double.parseDouble(text.getText());
 		}catch (NumberFormatException e) {
-			throw new InvalidInputException("abc");
+			throw new InvalidInputException();
 		}
 	}
 }
