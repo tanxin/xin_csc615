@@ -127,7 +127,7 @@ public class DrugTester extends JFrame {
 		jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.LINE_AXIS));
 		jPanel1.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
 		
-		jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+		jLabel1.setFont(new java.awt.Font("Dialog", 3, 24));
 		jLabel1.setText("NFL Drug Testing Program");
 		jPanel1.add(jLabel1);
 
@@ -187,10 +187,12 @@ public class DrugTester extends JFrame {
 		jPanel4.setBorder(BorderFactory.createTitledBorder("Selection Results"));
 		jPanel4.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
+		jScrollPane1.setBorder(BorderFactory.createTitledBorder("Selection List"));
 		jScrollPane1.setViewportView(jList1);
 
 		jPanel4.add(jScrollPane1);
-
+		
+		jScrollPane2.setBorder(BorderFactory.createTitledBorder("Remaining Candidates"));
 		jScrollPane2.setViewportView(jList2);
 		jScrollPane2.setPreferredSize(new java.awt.Dimension(110, 340));
 
@@ -226,7 +228,10 @@ public class DrugTester extends JFrame {
 		
 		if(candidateList.size()<num)
 			num = candidateList.size();
-		if(num<1) return;
+		if(num<1) {
+			JOptionPane.showMessageDialog(this, "Please enter the number which bigger than zero in textbox");
+			return;
+		}
 
 		undoList1.add(new ArrayList<String>(selectList));
 		selectList.clear();
@@ -273,5 +278,4 @@ public class DrugTester extends JFrame {
 		}
 		myrefresh();
 	}
-
 }
